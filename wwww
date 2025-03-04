@@ -9,13 +9,17 @@ local tab2 = window.new_tab('rbxassetid://4483345998')
 
 -- // Sections \\ --
 local section = tab.new_section('Main')
-local section1 = tab.new_section('Addons')
-local section2 = tab2.new_section('ESP')
+local section2 = tab2.new_section('Aiming')
+local section3 = tab3.new_section('ESP')
+local section4 = tab4.new_section('Misc')
+
 
 -- // Sector \\ --
 local sector = section.new_sector('Autofarming', 'Left')
-local sector1 = section1.new_sector('More Autofarming', 'Right')
-local sector2 = section2.new_sector('Esp', 'Left')
+local sector1 = section.new_sector('Auto Pad', 'Right')
+local sector = section2.new_sector('HBE', 'Left')
+local sector = section3.new_sector('ESP', 'Left')
+local sector = section4.new_sector('Misc', 'Left')
 
 
 
@@ -71,5 +75,63 @@ local toggle = sector.element('Toggle', 'Kill All', false, function(v)
         task.spawn(EnableKillAll) -- Run in a separate thread
     else
         killAllEnabled = false -- Ensure loop stops
+    end
+end)
+
+
+
+local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
+local Workspace = game:GetService("Workspace")
+
+local DuelPads = {
+    ["Pad1"] = Workspace.Lobby:GetChildren()[2].DuelRing_1v1:GetChildren()[3].Pad,
+    ["Pad2"] = Workspace.Lobby:GetChildren()[2].DuelRing_2v2:GetChildren()[3].Pad,
+    ["Pad3"] = Workspace.Lobby:GetChildren()[2].DuelRing_3v3:GetChildren()[3].Pad,
+    ["Pad4"] = Workspace.Lobby:GetChildren()[2].DuelRing_4v4:GetChildren()[3].Pad
+}
+
+local Toggles = {
+    ["Pad1"] = false,
+    ["Pad2"] = false,
+    ["Pad3"] = false,
+    ["Pad4"] = false
+}
+
+local function TeleportLoop(pad)
+    while Toggles[pad] do
+        if LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("HumanoidRootPart") then
+            LocalPlayer.Character.HumanoidRootPart.CFrame = DuelPads[pad].CFrame
+        end
+        task.wait(1) -- Teleport every second
+    end
+end
+
+-- Teleport toggles using sector.element
+local togglePad1 = sector1.element('Toggle', 'Teleport to Pad1', false, function(v)
+    Toggles["Pad1"] = v.Toggle
+    if Toggles["Pad1"] then
+        task.spawn(function() TeleportLoop("Pad1") end)
+    end
+end)
+
+local togglePad2 = sector1.element('Toggle', 'Teleport to Pad2', false, function(v)
+    Toggles["Pad2"] = v.Toggle
+    if Toggles["Pad2"] then
+        task.spawn(function() TeleportLoop("Pad2") end)
+    end
+end)
+
+local togglePad3 = sector1.element('Toggle', 'Teleport to Pad3', false, function(v)
+    Toggles["Pad3"] = v.Toggle
+    if Toggles["Pad3"] then
+        task.spawn(function() TeleportLoop("Pad3") end)
+    end
+end)
+
+local togglePad4 = sector1.element('Toggle', 'Teleport to Pad4', false, function(v)
+    Toggles["Pad4"] = v.Toggle
+    if Toggles["Pad4"] then
+        task.spawn(function() TeleportLoop("Pad4") end)
     end
 end)
