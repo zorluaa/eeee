@@ -15,7 +15,7 @@ local section2 = tab2.new_section('ESP')
 -- // Sector \\ --
 local sector = section.new_sector('Autofarming', 'Left')
 local sector1 = section1.new_sector('More Autofarming', 'Right')
-local sector1 = section2.new_sector('Esp', 'Left')
+local sector2 = section2.new_sector('Esp', 'Left')
 
 
 
