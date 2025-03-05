@@ -18,10 +18,10 @@ local section4 = tab4.new_section('Misc')
 
 
 -- // Sector \\ --
-local sector = section.new_sector('Autofarming', 'Left')
-local sector = section2.new_sector('HBE', 'Left')
-local sector = section3.new_sector('ESP', 'Left')
-local sector = section4.new_sector('Misc', 'Left')
+local sector1 = section.new_sector('Autofarming', 'Left')
+local sector2= section2.new_sector('HBE', 'Left')
+local sector3 = section3.new_sector('ESP', 'Left')
+local sector4 = section4.new_sector('Misc', 'Left')
 
 
 
@@ -110,28 +110,28 @@ local function TeleportLoop(pad)
 end
 
 -- Teleport toggles using sector.element
-local togglePad1 = sector.element('Toggle', 'Teleport to Pad1', false, function(v)
+local togglePad1 = sector1.element('Toggle', 'Teleport to Pad1', false, function(v)
     Toggles["Pad1"] = v.Toggle
     if Toggles["Pad1"] then
         task.spawn(function() TeleportLoop("Pad1") end)
     end
 end)
 
-local togglePad2 = sector.element('Toggle', 'Teleport to Pad2', false, function(v)
+local togglePad2 = sector1.element('Toggle', 'Teleport to Pad2', false, function(v)
     Toggles["Pad2"] = v.Toggle
     if Toggles["Pad2"] then
         task.spawn(function() TeleportLoop("Pad2") end)
     end
 end)
 
-local togglePad3 = sector.element('Toggle', 'Teleport to Pad3', false, function(v)
+local togglePad3 = sector1.element('Toggle', 'Teleport to Pad3', false, function(v)
     Toggles["Pad3"] = v.Toggle
     if Toggles["Pad3"] then
         task.spawn(function() TeleportLoop("Pad3") end)
     end
 end)
 
-local togglePad4 = sector.element('Toggle', 'Teleport to Pad4', false, function(v)
+local togglePad4 = sector1.element('Toggle', 'Teleport to Pad4', false, function(v)
     Toggles["Pad4"] = v.Toggle
     if Toggles["Pad4"] then
         task.spawn(function() TeleportLoop("Pad4") end)
