@@ -6,6 +6,9 @@ local window = library.new('Void.lua Murder Vs Sheriff [FREE]', 'By Zor')
 -- // Tabs \\ --
 local tab = window.new_tab('rbxassetid://4483345998')
 local tab2 = window.new_tab('rbxassetid://4483345998')
+local tab3 = window.new_tab('rbxassetid://4483345998')
+local tab4 = window.new_tab('rbxassetid://4483345998')
+
 
 -- // Sections \\ --
 local section = tab.new_section('Main')
