@@ -69,7 +69,7 @@ function EnableKillAll()
 end
 
 -- Toggle using sector.element
-local toggle = sector.element('Toggle', 'Kill All', false, function(v)
+local toggle = sector1.new_toggle('Toggle', 'Kill All', false, function(v)
     killAllEnabled = v.Toggle
     print("Kill All Enabled:", v.Toggle)
 
@@ -110,28 +110,28 @@ local function TeleportLoop(pad)
 end
 
 -- Teleport toggles using sector.element
-local togglePad1 = sector1.element('Toggle', 'Teleport to Pad1', false, function(v)
+local togglePad1 = sector1.new_toggle('Teleport to Pad1', false, function(v)
     Toggles["Pad1"] = v.Toggle
     if Toggles["Pad1"] then
         task.spawn(function() TeleportLoop("Pad1") end)
     end
 end)
 
-local togglePad2 = sector1.element('Toggle', 'Teleport to Pad2', false, function(v)
+local togglePad1 = sector1.new_toggle('Teleport to Pad2', false, function(v)
     Toggles["Pad2"] = v.Toggle
     if Toggles["Pad2"] then
         task.spawn(function() TeleportLoop("Pad2") end)
     end
 end)
 
-local togglePad3 = sector1.element('Toggle', 'Teleport to Pad3', false, function(v)
+local togglePad1 = sector1.new_toggle('Teleport to Pad3', false, function(v)
     Toggles["Pad3"] = v.Toggle
     if Toggles["Pad3"] then
         task.spawn(function() TeleportLoop("Pad3") end)
     end
 end)
 
-local togglePad4 = sector1.element('Toggle', 'Teleport to Pad4', false, function(v)
+local togglePad1 = sector1.new_toggle('Teleport to Pad4', false, function(v)
     Toggles["Pad4"] = v.Toggle
     if Toggles["Pad4"] then
         task.spawn(function() TeleportLoop("Pad4") end)
